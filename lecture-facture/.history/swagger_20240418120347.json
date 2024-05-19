@@ -1,0 +1,192 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "API Documentation",
+      "description": "Documentation for your API"
+    },
+    "paths": {
+      "/extractedData": {
+        "get": {
+          "summary": "Get all extracted data",
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "pageIdList": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "fieldValues": {
+                      "type": "object",
+                      "properties": {
+                        "Document Date": {
+                          "type": "string"
+                        },
+                        "Full Name": {
+                          "type": "string"
+                        },
+                        "Postal Address": {
+                          "type": "string"
+                        },
+                        "Street": {
+                          "type": "string"
+                        },
+                        "Zip Code and Town": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/extractedData/{id}": {
+        "get": {
+          "summary": "Get extracted data by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "pageIdList": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "classes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "fieldValues": {
+                    "type": "object",
+                    "properties": {
+                      "Document Date": {
+                        "type": "string"
+                      },
+                      "Full Name": {
+                        "type": "string"
+                      },
+                      "Postal Address": {
+                        "type": "string"
+                      },
+                      "Street": {
+                        "type": "string"
+                      },
+                      "Zip Code and Town": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update extracted data field by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "field",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete extracted data by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            }
+          }
+        }
+      },
+      "/caas/extract": {
+        "post": {
+          "summary": "Extract data using CaaS API",
+          "consumes": [
+            "application/octet-stream"
+          ],
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Data to be extracted",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            }
+          }
+        }
+      }
+    }
+  }
+  

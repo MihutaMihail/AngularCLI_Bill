@@ -1,0 +1,50 @@
+[
+  {
+    "id": 2,
+    "pageIdList": [
+      1
+    ],
+    "classes": [
+      "DOM_FACTURE_ENERGIE"
+    ],
+    "fieldValues": {
+      "DOCUMENT_DATE": "2018-11-21",
+      "FULL_NAME": "{\n    \"FULL_NAME\": \"YVAN BLAISE\"\n  }",
+      "POSTAL_ADDRESS": "67 RUE LOUIS PASTEUR\n12345 LAVILLE",
+      "STREET": "67 RUE LOUIS PASTEUR",
+      "ZIPCODE_AND_TOWN": "12345 LAVILLE"
+    }
+  },
+  {
+    "id": 3,
+    "pageIdList": [
+      1
+    ],
+    "classes": [
+      "DOM_FACTURE_ENERGIE"
+    ],
+    "fieldValues": {
+      "DOCUMENT_DATE": "2018-11-21",
+      "FULL_NAME": "YVAN BLAISE",
+      "POSTAL_ADDRESS": "\"456 MAIN STREET\\n67890 CITY\"",
+      "STREET": "67 RUE LOUIS PASTEUR",
+      "ZIPCODE_AND_TOWN": "12345 LAVILLE"
+    }
+  },
+  {
+    "id": 4,
+    "pageIdList": [
+      1
+    ],
+    "classes": [
+      "DOM_FACTURE_ENERGIE"
+    ],
+    "fieldValues": {
+      "DOCUMENT_DATE": "2018-11-21",
+      "FULL_NAME": "wanmegni ahmed",
+      "POSTAL_ADDRESS": "calea victorie",
+      "STREET": "67 RUE LOUIS PASTEUR",
+      "ZIPCODE_AND_TOWN": "12345 LAVILLE"
+    }
+  }
+]

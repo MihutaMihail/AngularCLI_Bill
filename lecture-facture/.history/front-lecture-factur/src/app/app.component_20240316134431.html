@@ -1,0 +1,6 @@
+<p>Welcome to my lecture de facture</p>
+<router-outlet></router-outlet>
+
+<ngx-dropzone [config]="config" (change)="onFileChange($event)">
+  <div class="dropzone">Drag and drop a file here or click</div>
+</ngx-dropzone>

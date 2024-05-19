@@ -1,0 +1,13 @@
+<p>Welcome to my lecture de facture</p>
+<div class="container">
+  <h1>Upload a Photo</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <input type="file" id="photo" (change)="onFileSelected($event)" #photoInput>
+    </div>
+    <button type="submit">Upload</button>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
