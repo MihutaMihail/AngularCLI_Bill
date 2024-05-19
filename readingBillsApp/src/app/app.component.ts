@@ -8,7 +8,7 @@ import { ExtractDataAPIService } from './core/services/extract-data-api.service'
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'readingBillsApp';
 
   constructor(
@@ -16,13 +16,17 @@ export class AppComponent implements OnInit {
     private extractService: ExtractDataAPIService,
   ) {}
 
-  ngOnInit(): void {
-    this.ExtractData('assets/DOM_FACTURE_ENERGIE_DUPONT.jpeg');
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.ExtractData(file);
+    }
   }
 
-  public ExtractData(filePath: string): void {
+  public ExtractData(file: File): void {
     this.requestService
-      .RequestDataFromAPI(filePath)
+      .RequestDataFromAPI(file)
       .pipe(
         catchError((error) => {
           console.error('Error extracting API data:', error);

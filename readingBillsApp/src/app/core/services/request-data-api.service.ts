@@ -12,9 +12,22 @@ export class RequestDataApiService {
 
   constructor(private http: HttpClient) {}
 
-  // POST request to get data from image file
-  public RequestDataFromAPI(filePath: string): Observable<any> {
-    return this.loadImageFile(filePath).pipe(
+  // POST request to get data from the file
+  public RequestDataFromAPI(file: Blob): Observable<any> {
+    const headers = {
+      'X-Gravitee-Api-Key': this.apiKey,
+    };
+    return this.http.post<any>(this.caasEndpoint, file, { headers });
+  }
+
+  //
+  // If needed to send a file path instead of the file itself,
+  // use the functions below
+  //
+
+  // POST request to get data from the file
+  /*public RequestDataFromAPI(filePath: string): Observable<any> {
+    return this.loadImageFileFromPath(filePath).pipe(
       switchMap((blob: Blob) => {
         const headers = {
           'X-Gravitee-Api-Key': this.apiKey,
@@ -25,12 +38,12 @@ export class RequestDataApiService {
   }
 
   // Load image file for API request
-  private loadImageFile(filePath: string): Observable<Blob> {
+  private loadImageFileFromPath(filePath: string): Observable<Blob> {
     return this.http.get(filePath, { responseType: 'blob' }).pipe(
       catchError((error) => {
         console.error('Error loading image: file ', error);
         throw error;
       })
     );
-  }
+  }*/
 }

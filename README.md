@@ -1,18 +1,13 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Documentation](#documentation)
 - [Installation](#installation)
 - [Prepare environnement](#prepare-environnement)
-- [Getting started](#getting-started)
+- [Launching Project](#launching-project)
 - [Proxy](#proxy)
 
 ## Introduction
 This project has been developed using Angular with the goal of providing users the posibility of digitize their bills using a CaaS (Content as a Service) API. The extracted data is stored and displayed to the user inside the application. Finally, users can perform various actions on the extracted data, this can include adding a new field, updating existing values or completely removing a field if needed.
-
-## Documentation
-The documentation has been realized using [Swagger](https://swagger.io/solutions/api-documentation/). <br>
-You can find it the documentation [here](Documentation_API.pdf).
 
 ## Installation
 Before using the project, a certain amount of things need to be installed.
@@ -30,13 +25,17 @@ Before using the project, a certain amount of things need to be installed.
 ## Prepare environnement
 When the project is cloned, the command ```npm install``` will need to be executed to import all necessary dependencies from **package.json**.
 
-## Getting started
+## Launching Project
 To launch the project, you must run : <br>
 
 ```
 ng serve (launch angular server)
 node server.js (launch proxy server)
 ```
+
+To note, the commands can be executed inside a CMD or a PowerShell (except **ng serve**, that command will be executed in a CMD). To open a CMD, execute the command **cmd** inside PowerShell.
+
+In addition, the **ng serve** command should be ran inside the **readingBillsApp/** folder. The command **node server.js** will be ran inside the folder **backend-server/**. If not, the commands will not work, also meaning that the servers won't run resulting in a non functionnal application.
 
 ## Proxy
 Trying to use the CaaS API without a properly configured proxy, will have you run into something called CORS (Cross-Origin Resource Sharing). When making a request to a server from a web page, the browser enforces the Same-Origin Policy which means that only requests coming from the same origin (domain, protocol and port) as the web page itself are allowed. Since we don't have access to the source code of the API, we're going to use a proxy, otherwise known as a CORS proxy or reverse proxy. The goal is to have the request sent a backend server (proxy), makes it forward the request, fetch the response, and send it back to the frontend (angular cli server). Since the frontend (angular cli) and the backend (proxy) server are from the same origin, the CORS policy does not apply.<br>
