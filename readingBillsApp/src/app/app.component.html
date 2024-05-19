@@ -5,3 +5,6 @@
 <!--<app-bill></app-bill>-->
 
 <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)" />
+<div *ngFor="let data of extractedDataList">
+  <pre>{{ data | json }}</pre>
+</div>

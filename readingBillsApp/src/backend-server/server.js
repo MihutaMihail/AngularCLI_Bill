@@ -3,9 +3,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const cors = require('cors');
 
 const app = express();
-
-// Enable CORS for all routes
 app.use(cors());
+app.use(express.json());
 
 // Define the proxy middleware
 const apiProxy = createProxyMiddleware('/api', {
@@ -14,19 +13,10 @@ const apiProxy = createProxyMiddleware('/api', {
   logLevel: 'debug'
 });
 
-// Log requests and target URLs
-app.use('/api', (req, res, next) => {
-  console.log(`Incoming request: ${req.method} ${req.originalUrl}`);
-  if (apiProxy && apiProxy.options && apiProxy.options.target) {
-    console.log(`Proxying to: ${apiProxy.options.target}`);
-  } else {
-    console.log('Proxy middleware is not properly initialized.');
-  }
-  next();
-});
-
-// Use the proxy middleware for requests to /api
 app.use('/api', apiProxy);
+
+const dataRoutes = require('./routes/routes.js');
+app.use('/json', dataRoutes);
 
 // Start the server
 const port = 3000;
