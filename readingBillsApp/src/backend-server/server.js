@@ -16,12 +16,6 @@ const apiProxy = createProxyMiddleware('/api', {
 
 // Log requests and target URLs
 app.use('/api', (req, res, next) => {
-  // // Skip logging for OPTIONS requests
-  // if (req.method === 'OPTIONS') {
-  //   next();
-  //   return;
-  // }
-
   console.log(`Incoming request: ${req.method} ${req.originalUrl}`);
   if (apiProxy && apiProxy.options && apiProxy.options.target) {
     console.log(`Proxying to: ${apiProxy.options.target}`);

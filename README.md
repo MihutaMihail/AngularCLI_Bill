@@ -23,7 +23,8 @@ Before using the project, a certain amount of things need to be installed.
 (2) Using **Command Prompt** or **Windows PowerShell**, check if Angular CLI has been successfully installed with ```ng version```.
 
 ## Prepare environnement
-When the project is cloned, the command ```npm install``` will need to be executed to import all necessary dependencies from **package.json**.
+When the project is cloned, the command ```npm install``` will need to be executed to import all necessary dependencies from **package.json**. <br>
+This needs to be executed inside the **readingBillsApp/** folder.
 
 ## Launching Project
 To launch the project, you must run : <br>
