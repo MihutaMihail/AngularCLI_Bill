@@ -4,6 +4,8 @@
 
 <!--<app-bill></app-bill>-->
 
+<h3>IMPORTANT: after choosing a file, you will HAVE TO <u>WAIT</u>. This can take between 15 to 45 seconds on average (could potentially timeout). The list of bills will be automatically updated</h3>
+
 <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)" />
 <div *ngFor="let data of extractedDataList">
   <pre>{{ data | json }}</pre>

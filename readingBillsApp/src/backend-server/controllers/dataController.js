@@ -42,12 +42,12 @@ const deleteDataById = (req, res) => {
 // CAN'T BE CALLED THROUGH POSTMAN (secret key required)
 // Save extracted data coming from Angular
 const saveData = (req, res) => {
-  const { filename, data } = req.body;
-  if (!filename || !data) {
-    return res.status(400).send('Filename and data are required');
+  const { data, fileName } = req.body;
+  if (!data || !fileName) {
+    return res.status(400).send('Data and file name are required');
   }
-
-  const filePath = path.join(dataDirectory, `${filename}.json`);
+  
+  const filePath = path.join(dataDirectory, `${fileName}.json`);
   fs.writeFile(filePath, JSON.stringify(data, null, 2), (err) => {
     if (err) {
       return res.status(500).send('Error saving data');

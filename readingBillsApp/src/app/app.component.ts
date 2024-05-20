@@ -22,12 +22,19 @@ export class AppComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-      this.extractData(file);
+      const name = this.stripFileExtension(file.name);
+      this.extractData(file, name);
     }
   }
 
+  private stripFileExtension(fileName: string): string {
+    const lastDotIndex = fileName.lastIndexOf('.');
+    if (lastDotIndex === -1) return fileName;
+    return fileName.substring(0, lastDotIndex);
+  }
+
   // Extract data from file
-  private extractData(file: File): void {
+  private extractData(file: File, fileName: string): void {
     this.caasService
       .requestDataFromAPI(file)
       .pipe(
@@ -37,18 +44,22 @@ export class AppComponent implements OnInit {
         })
       )
       .subscribe((response) => {
-        const extractedData =
-          this.caasService.extractDataFromResponse(response);
-        this.saveExtractedData('extractedData', extractedData);
-        console.log("Extracted data : ", extractedData);
+        const extractedData = this.caasService.extractDataFromResponse(
+          this.generateId(this.extractedDataList),
+          fileName,
+          response
+        );
+        this.saveExtractedData(extractedData);
+        console.log('Extracted data : ', extractedData);
       });
   }
 
   // Save extracted data from response
-  private saveExtractedData(filename: string, data: any): void {
-    this.dataService.saveData(filename, data).subscribe({
+  private saveExtractedData(data: any): void {
+    this.dataService.saveData(data).subscribe({
       next: (response) => {
         console.log('Data saved successfully:', response);
+        this.loadData();
       },
       error: (error) => {
         console.error('Error saving data:', error);
@@ -56,12 +67,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // TESTING
   ngOnInit(): void {
-    this.getExtractedData();
+    this.loadData();
   }
 
-  private getExtractedData(): void {
+  private loadData(): void {
     this.dataService.getData().subscribe({
       next: (response) => {
         console.log('Retrieved data successfully:', response);
@@ -71,5 +81,16 @@ export class AppComponent implements OnInit {
         console.error('Error getting data:', error);
       },
     });
+  }
+
+  // Generate new id for json files
+  private generateId(existingData: any[]): number {
+    let maxId = 0;
+    existingData.forEach((item) => {
+      if (item.info.id > maxId) {
+        maxId = item.info.id;
+      }
+    });
+    return maxId + 1;
   }
 }

@@ -11,16 +11,19 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  public saveData(filename: string, data: any): Observable<any> {
+  // Call POST /save endpoint
+  public saveData(data: any): Observable<any> {
+    const fileName = data.info.fileName;
     const body = {
-      filename,
       data,
+      fileName
     };
 
     const headers = new HttpHeaders().set('X-Secret-Key', this.dataKey);
     return this.http.post(`${this.dataEndpoint}/save`, body, { headers });
   }
 
+  // Call GET / endpoint
   public getData(): Observable<any> {
     return this.http.get(`${this.dataEndpoint}/`);
   }

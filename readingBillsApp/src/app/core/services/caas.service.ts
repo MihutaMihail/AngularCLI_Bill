@@ -29,10 +29,14 @@ export class CaasService {
   }*/
 
   // Extract necessary information from CaaS response
-  public extractDataFromResponse(response: any): any {
+  public extractDataFromResponse(id: number, fileName: string, response: any): any {
     const document = response.documents[0];
 
     return {
+      info: {
+        id: id,
+        fileName: fileName
+      },
       pageIdList: document.pageIdList,
       classes: document.classes.map((c: any) => c.description),
       fieldValues: {
