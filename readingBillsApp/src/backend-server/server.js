@@ -2,9 +2,9 @@ const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const cors = require('cors');
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const server = express();
+server.use(cors());
+server.use(express.json());
 
 // Define the proxy middleware
 const apiProxy = createProxyMiddleware('/api', {
@@ -13,13 +13,15 @@ const apiProxy = createProxyMiddleware('/api', {
   logLevel: 'debug'
 });
 
-app.use('/api', apiProxy);
+// Import routes
+const dataRoutes = require('./routes/dataRoutes');
 
-const dataRoutes = require('./routes/routes.js');
-app.use('/json', dataRoutes);
+// Use routes
+server.use('/api', apiProxy);
+server.use('/data', dataRoutes);
 
 // Start the server
 const port = 3000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Backend server is running on http://localhost:${port}`);
 });

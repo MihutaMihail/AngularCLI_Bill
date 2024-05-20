@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BillDataService } from '../../core/services/bill-data.service';
 import { catchError } from 'rxjs';
 
 @Component({
@@ -7,12 +6,12 @@ import { catchError } from 'rxjs';
   templateUrl: './bill.component.html',
   styleUrl: './bill.component.scss',
 })
-export class BillComponent implements OnInit {
+export class BillComponent {
   billData: any;
 
-  constructor(private billDataService: BillDataService) {}
+  constructor() {}
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     this.fetchBillData();
   }
 
@@ -27,5 +26,5 @@ export class BillComponent implements OnInit {
         this.billData = data;
       }
     );
-  }
+  }*/
 }

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BillComponent } from './components/bill/bill.component';
-import { BillDataService } from './core/services/bill-data.service';
+//import { BillDataService } from './core/services/bill-data.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { BillDataService } from './core/services/bill-data.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [BillDataService],
+  providers: [/*BillDataService*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
