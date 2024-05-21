@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  private dataEndpoint = 'http://localhost:3000/data';  
+  private dataEndpoint = 'http://localhost:3000/data';
   private dataKey = 'd1sq3d5z1q-qh14jkh57-z140h335gs';
 
   constructor(private http: HttpClient) {}
@@ -18,7 +18,16 @@ export class DataService {
 
   // Call GET /:id endpoint
   public getDataById(id: number): Observable<any> {
-    return this.http.get(`${this.dataEndpoint}/${id}`)
+    return this.http.get(`${this.dataEndpoint}/${id}`);
+  }
+
+  // Call PUT /:id/:field endpoint
+  public updateDataField(id: number, field: string, newValue: string): Observable<any> {
+    const body = {
+      newValue,
+    };
+    
+    return this.http.put(`${this.dataEndpoint}/${id}/${field}`, body);
   }
 
   // Call POST /save endpoint
@@ -26,7 +35,7 @@ export class DataService {
     const id = data.info.id;
     const body = {
       data,
-      id
+      id,
     };
 
     const headers = new HttpHeaders().set('X-Secret-Key', this.dataKey);
@@ -35,6 +44,6 @@ export class DataService {
 
   // Call DELETE /:id endpoint
   public deleteData(id: number): Observable<any> {
-    return this.http.delete(`${this.dataEndpoint}/${id}`)
+    return this.http.delete(`${this.dataEndpoint}/${id}`);
   }
 }

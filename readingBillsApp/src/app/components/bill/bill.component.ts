@@ -9,6 +9,8 @@ import { DataService } from '../../core/services/data.service';
 })
 export class BillComponent implements OnInit {
   billData: any;
+  editing: any = {}; // Track editing state for each field
+  editedValues: any = {}; // Store temporary edited values
   private dataId: number = -1;
 
   constructor(
@@ -37,6 +39,33 @@ export class BillComponent implements OnInit {
         console.error('Error getting data by ID:', error);
       },
     });
+  }
+
+  private updateBillDataField(id:number, field: string, newValue: string): void {
+    this.dataService.updateDataField(id, field, newValue).subscribe({
+      next: () => {
+        this.fetchBillDataById(id);
+      },
+      error: (error) => {
+        console.error('Error updating field', error);
+      }
+    });
+  }
+
+  toggleEdit(key: string) {
+    this.editing[key] = !this.editing[key];
+    if (this.editing[key]) {
+      this.editedValues[key] = this.billData.fieldValues[key];
+    } else {
+      this.editedValues[key] = null;
+    }
+  }
+
+  confirmEdit(key: string) {
+    if (this.editedValues[key] !== undefined) {
+      this.updateBillDataField(this.dataId, key, this.editedValues[key]);
+      this.editing[key] = false;
+    }
   }
 
   // Return keys of an object
