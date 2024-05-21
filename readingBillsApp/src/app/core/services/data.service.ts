@@ -11,6 +11,16 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
+  // Call GET / endpoint
+  public getData(): Observable<any> {
+    return this.http.get(`${this.dataEndpoint}/`);
+  }
+
+  // Call GET /:id endpoint
+  public getDataById(id: number): Observable<any> {
+    return this.http.get(`${this.dataEndpoint}/${id}`)
+  }
+
   // Call POST /save endpoint
   public saveData(data: any): Observable<any> {
     const id = data.info.id;
@@ -23,12 +33,7 @@ export class DataService {
     return this.http.post(`${this.dataEndpoint}/save`, body, { headers });
   }
 
-  // Call GET / endpoint
-  public getData(): Observable<any> {
-    return this.http.get(`${this.dataEndpoint}/`);
-  }
-
-  // Call DELETE /id endpoint
+  // Call DELETE /:id endpoint
   public deleteData(id: number): Observable<any> {
     return this.http.delete(`${this.dataEndpoint}/${id}`)
   }

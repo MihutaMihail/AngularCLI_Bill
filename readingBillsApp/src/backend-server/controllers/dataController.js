@@ -26,7 +26,16 @@ const getAllData = (req, res) => {
 
 // Retrive data by ID
 const getDataById = (req, res) => {
+  const id = req.params.id;
+  const filePath = path.join(dataDirectory, `${id}.json`);
 
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      return res.status(404).send("Data by ID not found");
+    }
+
+    res.status(200).json(JSON.parse(data));
+  });
 };
 
 // Update data field by ID

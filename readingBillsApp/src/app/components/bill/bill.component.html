@@ -1,10 +1,8 @@
 <div *ngIf="billData">
-    <h3>Bill Details</h3>
-    <p>ID : {{ billData.bill.id }}</p>
-    <p>Customber : {{ billData.bill.customer }}</p>
-    <ul>
-        <li *ngFor="let item of billData.bill.items">
-            {{ item.name }} - $ {{ item.price }}
-        </li>
-    </ul>
+    <h2>Bill Details</h2>
+    <div *ngIf="billData.fieldValues">
+        <div *ngFor="let key of objectKeys(billData.fieldValues)">
+            <strong>{{ key }}:</strong> {{ billData.fieldValues[key] }}
+        </div>
+    </div>
 </div>

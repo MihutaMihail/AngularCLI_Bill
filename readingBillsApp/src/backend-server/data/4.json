@@ -1,0 +1,19 @@
+{
+  "info": {
+    "id": 4,
+    "fileName": "DOM_FACTURE_ENERGIE_DUPONT2"
+  },
+  "pageIdList": [
+    1
+  ],
+  "classes": [
+    "Facture d'énergie"
+  ],
+  "fieldValues": {
+    "DOCUMENT_DATE": "2018-11-21",
+    "FULL_NAME": "M. JEAN DUPONT",
+    "POSTAL_ADDRESS": "67 RUE LOUIS PASTEUR\n12345 TEST",
+    "STREET": "67 RUE LOUIS PASTEUR",
+    "ZIPCODE_AND_TOWN": "12345 LAVILLE"
+  }
+}

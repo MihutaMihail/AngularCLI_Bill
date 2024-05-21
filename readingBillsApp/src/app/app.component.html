@@ -1,15 +1,1 @@
-<!-- ADD ROUTEUR LINK -->
-<!--<router-outlet></router-outlet>
-<a [routerLink]="['/bill']">Go to Bill</a>-->
-
-<!--<app-bill></app-bill>-->
-
-<h3>IMPORTANT: after choosing a file, you will HAVE TO <u>WAIT</u>. This can take between 15 to 45 seconds on average (could potentially timeout). The list of bills will be automatically updated</h3>
-
-<input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)" />
-<div *ngFor="let bill of billList">
-  <pre>
-    <a [routerLink]="['/data', bill.info.id]">{{ bill.info.fileName }}</a>
-    <button (click)="deleteBill(bill.info.id)">X</button>
-  </pre>
-</div>
+<router-outlet></router-outlet>
