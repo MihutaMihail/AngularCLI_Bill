@@ -1,9 +1,18 @@
-<h3>IMPORTANT: after choosing a file, you will HAVE TO <u>WAIT</u>. This can take between 15 to 45 seconds on average (could potentially timeout). The list of bills will be automatically updated</h3>
+<div class="container mt-5">
+  <div class="alert alert-info" role="alert">
+    <h3 class="alert-heading">IMPORTANT:</h3>
+    <p>After choosing a file, you will HAVE TO <u>WAIT</u>. This can take between 15 to 45 seconds on average (could potentially timeout). The list of bills will be automatically updated.</p>
+  </div>
 
-<input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)" />
-<div *ngFor="let bill of billList">
-  <pre>
-    <a [routerLink]="['/data', bill.info.id]">{{ bill.info.fileName }}</a>
-    <button (click)="deleteBill(bill.info.id)">X</button>
-  </pre>
+  <div class="mb-3">
+    <label for="fileInput" class="form-label">Upload File:</label>
+    <input id="fileInput" type="file" class="form-control" accept="image/png, image/jpeg" (change)="onFileSelected($event)" />
+  </div>
+
+  <div class="list-group">
+    <div *ngFor="let bill of billList" class="list-group-item d-flex justify-content-between align-items-center">
+      <a [routerLink]="['/data', bill.info.id]">{{ bill.info.fileName }}</a>
+      <button class="btn btn-danger btn-sm" (click)="deleteBill(bill.info.id)">X</button>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,21 @@
-<div *ngIf="billData">
-    <h2>Bill Details</h2>
-    <div *ngIf="billData.fieldValues">
-      <div *ngFor="let key of objectKeys(billData.fieldValues)">
-        <strong>{{ key }}:</strong>
-        <span *ngIf="!editing[key]">{{ billData.fieldValues[key] }}</span>
-        <input *ngIf="editing[key]" type="text" [(ngModel)]="editedValues[key]">
-        <button (click)="toggleEdit(key)">
-          {{ editing[key] ? 'Cancel' : 'Edit' }}
-        </button>
-        <button *ngIf="editing[key]" (click)="confirmEdit(key)">Confirm</button>
+<div class="container mt-5" *ngIf="billData">
+  <h2 class="mb-4">Bill Details</h2>
+  
+  <div *ngIf="billData.fieldValues" class="list-group">
+    <div *ngFor="let key of objectKeys(billData.fieldValues)" class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="me-3">
+          <strong>{{ key }} : </strong>
+          <span *ngIf="!editing[key]">{{ billData.fieldValues[key] }}</span>
+          <input *ngIf="editing[key]" type="text" class="form-control" [(ngModel)]="editedValues[key]">
+        </div>
+        <div>
+          <button class="btn btn-secondary btn-sm me-2" (click)="toggleEdit(key)">
+            {{ editing[key] ? 'Cancel' : 'Edit' }}
+          </button>
+          <button *ngIf="editing[key]" class="btn btn-primary btn-sm" (click)="confirmEdit(key)">Confirm</button>
+        </div>
       </div>
     </div>
   </div>
+</div>
