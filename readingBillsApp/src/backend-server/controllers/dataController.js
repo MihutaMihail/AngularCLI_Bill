@@ -36,18 +36,27 @@ const updateDataFieldById = (req, res) => {
 
 // Delete data by ID
 const deleteDataById = (req, res) => {
+  const id = req.params.id;
+  const filePath = path.join(dataDirectory, `${id}.json`);
 
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      return res.status(404).send("Data not found");
+    }
+
+    res.status(200).json({ message: "Data deleted successfully" });
+  });
 };
 
 // CAN'T BE CALLED THROUGH POSTMAN (secret key required)
 // Save extracted data coming from Angular
 const saveData = (req, res) => {
-  const { data, fileName } = req.body;
-  if (!data || !fileName) {
-    return res.status(400).send('Data and file name are required');
+  const { data, id } = req.body;
+  if (!data || !id) {
+    return res.status(400).send('Data and id are required');
   }
   
-  const filePath = path.join(dataDirectory, `${fileName}.json`);
+  const filePath = path.join(dataDirectory, `${id}.json`);
   fs.writeFile(filePath, JSON.stringify(data, null, 2), (err) => {
     if (err) {
       return res.status(500).send('Error saving data');

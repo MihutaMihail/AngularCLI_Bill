@@ -13,10 +13,10 @@ export class DataService {
 
   // Call POST /save endpoint
   public saveData(data: any): Observable<any> {
-    const fileName = data.info.fileName;
+    const id = data.info.id;
     const body = {
       data,
-      fileName
+      id
     };
 
     const headers = new HttpHeaders().set('X-Secret-Key', this.dataKey);
@@ -26,5 +26,10 @@ export class DataService {
   // Call GET / endpoint
   public getData(): Observable<any> {
     return this.http.get(`${this.dataEndpoint}/`);
+  }
+
+  // Call DELETE /id endpoint
+  public deleteData(id: number): Observable<any> {
+    return this.http.delete(`${this.dataEndpoint}/${id}`)
   }
 }

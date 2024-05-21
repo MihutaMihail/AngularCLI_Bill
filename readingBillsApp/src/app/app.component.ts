@@ -10,7 +10,7 @@ import { DataService } from './core/services/data.service';
 })
 export class AppComponent implements OnInit {
   title = 'readingBillsApp';
-  extractedDataList: any[] = [];
+  billList: any[] = [];
 
   constructor(
     private caasService: CaasService,
@@ -33,6 +33,18 @@ export class AppComponent implements OnInit {
     return fileName.substring(0, lastDotIndex);
   }
 
+  // Delete bill by its ID
+  deleteBill(id: number): void {
+    this.dataService.deleteData(id).subscribe({
+      next: () => {
+        this.loadData();
+      },
+      error: (error) => {
+        console.error('Error deleting data:', error);
+      },
+    });
+  }
+  
   // Extract data from file
   private extractData(file: File, fileName: string): void {
     this.caasService
@@ -45,7 +57,7 @@ export class AppComponent implements OnInit {
       )
       .subscribe((response) => {
         const extractedData = this.caasService.extractDataFromResponse(
-          this.generateId(this.extractedDataList),
+          this.generateId(this.billList),
           fileName,
           response
         );
@@ -75,7 +87,7 @@ export class AppComponent implements OnInit {
     this.dataService.getData().subscribe({
       next: (response) => {
         console.log('Retrieved data successfully:', response);
-        this.extractedDataList = response;
+        this.billList = response;
       },
       error: (error) => {
         console.error('Error getting data:', error);
