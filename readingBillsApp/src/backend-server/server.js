@@ -1,6 +1,8 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 const server = express();
 server.use(cors());
@@ -18,6 +20,7 @@ const dataRoutes = require('./routes/dataRoutes');
 
 // Use routes
 server.use('/api', apiProxy);
+server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 server.use('/data', dataRoutes);
 
 // Start the server

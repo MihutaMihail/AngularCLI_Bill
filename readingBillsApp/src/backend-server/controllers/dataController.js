@@ -11,7 +11,7 @@ if (!fs.existsSync(dataDirectory)) {
 const getAllData = (req, res) => {
   fs.readdir(dataDirectory, (err, files) => {
     if (err) {
-      return res.status(500).send("Error reading data directory");
+      return res.status(500).send("Data not found");
     }
 
     const jsonFiles = files.filter((file) => file.endsWith(".json"));

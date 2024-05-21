@@ -1,0 +1,183 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Documentation",
+    "description": "Documentation for your API"
+  },
+  "paths": {
+    "/data": {
+      "get": {
+        "summary": "Get all data",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "info": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "fileName": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "pageIdList": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "classes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "fieldValues": {
+                    "type": "object",
+                    "properties": {
+                      "DOCUMENT_DATE": {
+                        "type": "string"
+                      },
+                      "FULL_NAME": {
+                        "type": "string"
+                      },
+                      "POSTAL_ADDRESS": {
+                        "type": "string"
+                      },
+                      "STREET": {
+                        "type": "string"
+                      },
+                      "ZIPCODE_AND_TOWN": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data/{id}": {
+      "get": {
+        "summary": "Get data by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "info": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "fileName": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "pageIdList": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "classes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "fieldValues": {
+                  "type": "object",
+                  "properties": {
+                    "DOCUMENT_DATE": {
+                      "type": "string"
+                    },
+                    "FULL_NAME": {
+                      "type": "string"
+                    },
+                    "POSTAL_ADDRESS": {
+                      "type": "string"
+                    },
+                    "STREET": {
+                      "type": "string"
+                    },
+                    "ZIPCODE_AND_TOWN": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update data field by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "field",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete data by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    }
+  }
+}
