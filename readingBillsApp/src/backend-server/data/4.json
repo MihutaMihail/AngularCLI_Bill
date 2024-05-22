@@ -1,7 +1,7 @@
 {
   "info": {
     "id": 4,
-    "fileName": "DOM_FACTURE_ENERGIE_DUPONT2"
+    "fileName": "DOM_FACTURE_ENERGIE_DUPONT"
   },
   "pageIdList": [
     1
@@ -12,7 +12,7 @@
   "fieldValues": {
     "DOCUMENT_DATE": "2018-11-21",
     "FULL_NAME": "M. JEAN DUPONT",
-    "POSTAL_ADDRESS": "67 RUE LOUIS PASTEUR12345 AnotherTest",
+    "POSTAL_ADDRESS": "67 RUE LOUIS PASTEUR\n12345 LAVILLE",
     "STREET": "67 RUE LOUIS PASTEUR",
     "ZIPCODE_AND_TOWN": "12345 LAVILLE"
   }

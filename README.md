@@ -1,7 +1,7 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Documentation](#documentation)
+- [API-Documentation](#api-documentation)
 - [Installation](#installation)
 - [Prepare environnement](#prepare-environnement)
 - [Launching Project](#launching-project)
@@ -10,9 +10,9 @@
 ## Introduction
 This project has been developed using Angular with the goal of providing users the posibility of digitize their bills using a CaaS (Content as a Service) API. The extracted data is stored and displayed to the user inside the application. Finally, users can perform various actions on the extracted data, this can include adding a new field, updating existing values or completely removing a field if needed.
 
-## Documentation
-The documentation has been realized using [Swagger](https://swagger.io/solutions/api-documentation/). <br>
-You can find it the documentation [here](BillReader_Doc_API.pdf).
+## API-Documentation
+The API documentation has been realized using [Swagger](https://swagger.io/solutions/api-documentation/). <br>
+You can find it the API documentation [here](BillReader_Doc_API.pdf).
 
 ## Installation
 Before using the project, a certain amount of things need to be installed.

@@ -47,7 +47,7 @@ export class BillListComponent {
           this.generateId(this.billList),
           fileName,
           response
-        );
+        );  
         this.saveExtractedData(extractedData);
         console.log('Extracted data : ', extractedData);
       });
